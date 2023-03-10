@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 13:17:12 by amaucher          #+#    #+#             */
-/*   Updated: 2023/03/08 13:17:16 by amaucher         ###   ########.fr       */
+/*   Created: 2023/03/10 11:17:40 by amaucher          #+#    #+#             */
+/*   Updated: 2023/03/10 11:17:41 by amaucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
+#include "minitalk.h"
 #include "ft_printf/ft_printf.h"
 
-int	ft_printf(const char *format, ...);
+int	main(int ac , char **av)
+{
+	/* process needs to run to always receive signals */
+	ft_printf("%d", getpid());
+	while (1)
+	{
+		signal(SIGSUR_1, atob);
+		signal(SIGSUR_2, atob);
+	}
 
-/* only need to link if I have functions in other files than my program */
-/* utils */
-size_t	ft_strlen(const char *s);
-char	*str_to_binary(char *str);
-
-#endif
+}

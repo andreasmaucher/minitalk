@@ -46,7 +46,7 @@ char	*str_to_binary(char *str)
 			/* convert ascii to binary */ //! what is happening here
 			if (ascii & (1 << j))
 			/* to concatenate the new with the already existing string */
-				strcat(binary, "1");
+				strcat(binary, "1"); //! I can"t use library function!
 			else 
 				strcat(binary, "0");
 			j--;
