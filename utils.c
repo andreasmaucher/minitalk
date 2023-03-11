@@ -30,6 +30,8 @@ char	*str_to_binary(char *str)
 	int	ascii;
 	char	*binary;
 
+	strlen = 0;
+	ascii = 0;
 	if (str == NULL)
 		return (0);
 	strlen = ft_strlen(str);
@@ -43,25 +45,29 @@ char	*str_to_binary(char *str)
 		j = 7;
 		while (j >= 0)
 		{
-			/* convert ascii to binary */ //! what is happening here
+			/* convert ascii to binary */
 			if (ascii & (1 << j))
 			/* to concatenate the new with the already existing string */
-				strcat(binary, "1"); //! I can"t use library function!
+				strcat(binary, "1"); //! I can't use library function!
 			else 
 				strcat(binary, "0");
 			j--;
-			printf("%s\n", binary);
+			//printf("%s\n", binary);
 		}
 		i++;
 	}
 	return (binary);
 }
 
-int	main()
+int	main(int ac, char **av) //int ac, char **av
 {
-	char *str = "asdf";
+	char *str = av[2];
 	char *binary;
 
-	binary = str_to_binary(str);
-	printf("%s", binary);
+	while (1)
+	{
+		binary = str_to_binary(str);
+		//binary = str_to_binary(av[2]);
+		printf("%s", binary);
+	}
 }

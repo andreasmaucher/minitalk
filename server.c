@@ -16,11 +16,11 @@
 int	main(int ac , char **av)
 {
 	/* process needs to run to always receive signals */
-	ft_printf("%d", getpid());
-	while (1)
+	printf("%d", getpid()); //! change to my function
+	/* while (1)
 	{
 		signal(SIGSUR_1, atob);
 		signal(SIGSUR_2, atob);
-	}
+	} */
 
 }
