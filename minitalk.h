@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "ft_printf/ft_printf.h"
+#include <sys/types.h>
 
 int	ft_printf(const char *format, ...);
 
@@ -27,5 +28,6 @@ int	ft_printf(const char *format, ...);
 /* utils */
 size_t	ft_strlen(const char *s);
 char	str_to_binary(char str);
+char	char_to_binary(char *str, pid_t pid);
 
 #endif
