@@ -26,6 +26,6 @@ int	ft_printf(const char *format, ...);
 /* only need to link if I have functions in other files than my program */
 /* utils */
 size_t	ft_strlen(const char *s);
-char	*str_to_binary(char *str);
+char	str_to_binary(char str);
 
 #endif

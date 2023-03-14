@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   server2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 13:17:33 by amaucher          #+#    #+#             */
-/*   Updated: 2023/03/08 13:17:37 by amaucher         ###   ########.fr       */
+/*   Created: 2023/03/14 09:25:10 by amaucher          #+#    #+#             */
+/*   Updated: 2023/03/14 09:25:11 by amaucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	char_to_binary(char c)
+// server.c
+void	handler_sigusr1(int signum)
 {
-	int	i;
-	int mask;
-
-	i = 7;
-	mask = 0b10000000;
-	while (i >= 0)
-	{
-		printf("%c", c & mask ? '1' : '0');
-		mask >>= 1;
-		i--;
-	}
-	return (c);
+   printf("signal %d received.\n", signum);
 }
 
-int	main()
+int	main(void)
 {
-	char c = 'A';
-	//printf("%c", char_to_binary(c));
-	char_to_binary(c);
+   pid_t	pid;
+
+   pid = getpid();
+   printf("PID: %d\n", pid);
+   signal(SIGUSR1, handler_sigusr1);
+   while (1)
+   	pause();
 }

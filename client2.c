@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   client2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 13:17:33 by amaucher          #+#    #+#             */
-/*   Updated: 2023/03/08 13:17:37 by amaucher         ###   ########.fr       */
+/*   Created: 2023/03/14 09:25:03 by amaucher          #+#    #+#             */
+/*   Updated: 2023/03/14 09:25:05 by amaucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	char_to_binary(char c)
+// client.c
+int	main(int argc, char *argv[])
 {
-	int	i;
-	int mask;
+   int	pid;
 
-	i = 7;
-	mask = 0b10000000;
-	while (i >= 0)
-	{
-		printf("%c", c & mask ? '1' : '0');
-		mask >>= 1;
-		i--;
-	}
-	return (c);
-}
-
-int	main()
-{
-	char c = 'A';
-	//printf("%c", char_to_binary(c));
-	char_to_binary(c);
+   if (argc != 2)
+   {
+   	printf("client: invalid arguments\n");
+   	exit(EXIT_FAILURE);
+   }
+   pid = atoi(argv[1]);
+   kill(pid, SIGUSR1);
+   return (0);
 }
