@@ -28,21 +28,15 @@ char	char_to_binary(char *str, pid_t pid)
 		while (j < 8)
 		{
 			//printf("%c", c & mask ? '1' : '0');
-			if (c == '1' & mask == '1')
-			{
-				kill(pid, SIGUSR1);
-				exit(1);
-			}
-			else
-			{
+			/* compares the bits at the same position */
+			if (c & mask)
 				kill(pid, SIGUSR2);
-				exit(1);
-			}
+			else
+				kill(pid, SIGUSR1);
 			mask >>= 1;
 			j++;
-			usleep(500);
+			usleep(5);
 		}
-		printf("\n");
 		i++;
 	}
 	return (c);

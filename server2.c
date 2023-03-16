@@ -12,14 +12,6 @@
 
 #include "minitalk.h"
 
-/* void	handler_sigusr(int signum)
-{
-	if (signum == SIGUSR1)
-		printf("0");
-	if (signum == SIGUSR2)
-		printf("1");
-} */
-
 void	handler_sigusr(int signum)
 {
    static char	c = 0xFF;
@@ -44,15 +36,9 @@ void	handler_sigusr(int signum)
    }
 }
 
-/* void	handler_sigusr1(int signum)
-{
-   (void)signum;
-   printf("1");
-} */
-
 int	main(void)
 {
-   pid_t	pid;
+   pid_t		pid;
 
    pid = getpid();
    printf("PID: %d\n", pid);
