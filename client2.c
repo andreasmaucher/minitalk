@@ -27,7 +27,7 @@ char	char_to_binary(char *str, pid_t pid)
 		j = 0;
 		while (j < 8)
 		{
-			//printf("%c", c & mask ? '1' : '0');
+			printf("%c", c & mask ? '1' : '0');
 			/* compares the bits at the same position */
 			if (c & mask)
 				kill(pid, SIGUSR2);
@@ -38,25 +38,10 @@ char	char_to_binary(char *str, pid_t pid)
 			usleep(5);
 		}
 		i++;
+		printf("\n");
 	}
 	return (c);
 }
-/* 
-char	send_signals(char *c, pid_t pid)
-{
-	int	i;
-	int mask;
-
-	i = 7;
-	mask = 0b10000000;
-	while (i >= 0)
-	{
-		printf("%c", c & mask ? '1' : '0');
-		mask >>= 1;
-		i--;
-	}
-	return (c);
-} */
 
 int	main(int argc, char *argv[])
 {
