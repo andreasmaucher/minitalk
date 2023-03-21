@@ -12,34 +12,29 @@
 
 #include "minitalk.h"
 
-char	char_to_binary(char *str)
+int	ft_atoi(const char *nptr)
 {
 	int	i;
-	int mask;
-	char	c;
-	int	j;
+	int	sign;
+	int	res;
 
 	i = 0;
-	while (str[i] != '\0')
+	sign = 1;
+	res = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || (nptr[i] == 32))
+		i++;
+	if (nptr[i] == '-')
 	{
-		mask = 0b10000000;
-		c = str[i];
-		j = 0;
-		while (j < 8)
-		{
-			printf("%c", c & mask ? '1' : '0');
-			mask >>= 1;
-			j++;
-		}
-		printf("\n");
+		sign = sign * -1;
 		i++;
 	}
-	return (c);
-}
-
-int	main(int ac, char **av)
-{
-	//char c[] = "Blue";
-	//printf("%c", char_to_binary(c));
-	char_to_binary(av[1]);
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = res * 10;
+		res = nptr[i] - 48 + res;
+		i++;
+	}
+	return (res * sign);
 }

@@ -1,77 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 11:17:33 by amaucher          #+#    #+#             */
-/*   Updated: 2023/03/10 11:17:35 by amaucher         ###   ########.fr       */
+/*   Created: 2023/03/14 09:25:03 by amaucher          #+#    #+#             */
+/*   Updated: 2023/03/14 09:25:05 by amaucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_atoi(const char *nptr);
+
+char	char_to_binary(char *str, pid_t pid)
 {
 	int	i;
+	int mask;
+	char	c;
+	int	j;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (str[i] != '\0')
+	{
+		mask = 0b10000000;
+		c = str[i];
+		j = 0;
+		while (j < 8)
+		{
+			//printf("%c", c & mask ? '1' : '0');
+			/* compares the bits at the same position */
+			if (c & mask)
+				kill(pid, SIGUSR2);
+			else
+				kill(pid, SIGUSR1);
+			mask >>= 1;
+			j++;
+			/* this needs to be adjusted depending on the computer */
+			usleep(300);
+		}
 		i++;
-	return (i);
-}
-
-//! if I do it like this I have to store it! might be better to loop
-//! differently and only send one character at a time
-char	*str_to_binary(char str)
-{
-	int	strlen;
-	int	i;
-	int	j;
-	int	ascii;
-	char	*binary;
-
-	/* if (str == NULL)
-		return (0);
-	strlen = ft_strlen(str);
-	binary[0] = '\0';
-	i = 0; */
-	/* while (i < strlen)
-	{
-		/* convert each char to ascii
-		ascii = str[i];
-		/* since one byte are 8 bits */
-		j = 7;
-		while (j >= 0)
-		{
-			/* convert ascii to binary */ //! what is happening here
-			if (ascii & (1 << j))
-			/* to concatenate the new with the already existing string */
-				printf("%d", 1);
-				//strcat(binary, "1"); //! I can"t use library function! //send it directly
-			else 
-				printf("%d", 1);
-				//strcat(binary, "0");
-			j--;
-			printf("%s\n", binary);
-		}
-	return (binary);
-}
-
-int	main(int ac, char **av)
-{
-	int	i;
-	char	*binary_str;
-
-	i = 1;
-	if (ac == 2) //=3
-	{
-		//while (i >= 0) //av[2][i] != '\0'
-		{
-			binary_str = str_to_binary(av[2]);
-			//i--;
-		}
+		//printf("\n");
 	}
-	printf("%s", binary_str);
+	return (c);
+}
+
+int	main(int argc, char *argv[])
+{
+   pid_t	pid;
+
+   if (argc != 3)
+   {
+   	printf("Error: invalid arguments\n");
+   		exit(0);
+   }
+   pid = ft_atoi(argv[1]);
+   char_to_binary(argv[2], pid);
+   return (0);
 }

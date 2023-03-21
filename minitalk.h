@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 13:17:12 by amaucher          #+#    #+#             */
-/*   Updated: 2023/03/08 13:17:16 by amaucher         ###   ########.fr       */
+/*   Created: 2023/03/21 14:57:04 by amaucher          #+#    #+#             */
+/*   Updated: 2023/03/21 14:57:07 by amaucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@
 #include <sys/types.h>
 
 int	ft_printf(const char *format, ...);
-
-/* only need to link if I have functions in other files than my program */
-/* utils */
 size_t	ft_strlen(const char *s);
-char	str_to_binary(char str);
-char	char_to_binary(char *str, pid_t pid);
+int	ft_atoi(const char *nptr);
 
 #endif
