@@ -38,7 +38,7 @@ void	handler_sigusr(int signal)
    if (n == 8)
    {
    	//printf("-> %c\n", c);
-   	printf("%c\n", c);
+   	ft_printf("%c\n", c);
 	//usleep(300);
    	n = 0;
    	c = 0b11111111;
@@ -50,7 +50,7 @@ int	main(void)
    pid_t		pid;
 
    pid = getpid();
-   printf("PID: %d\n", pid);
+   ft_printf("PID: %d\n", pid);
    signal(SIGUSR1, handler_sigusr);
    signal(SIGUSR2, handler_sigusr);
    while (1)

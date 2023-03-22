@@ -20,8 +20,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <sys/types.h>
-# include "../ft_printf/ft_printf.h"
-
-int	ft_atoi(const char *nptr);
+# include "ft_printf/ft_printf.h"
 
 #endif

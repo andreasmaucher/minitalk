@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minitalk.h"
+#include "minitalk.h"
 
 int	ft_atoi(const char *nptr)
 {
@@ -76,7 +76,7 @@ int	main(int argc, char *argv[])
 
    if (argc != 3)
    {
-   	printf("Error: invalid arguments\n");
+   	ft_printf("Error: invalid arguments\n");
    		return(0);
    }
    pid = ft_atoi(argv[1]);
