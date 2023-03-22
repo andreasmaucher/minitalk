@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int		i;
+	int		sign;
+	int		res;
 
 	i = 0;
 	sign = 1;
@@ -39,12 +39,13 @@ int	ft_atoi(const char *nptr)
 	return (res * sign);
 }
 
+/* conversion by comparing the bits at the same position */
 char	char_to_binary(char *str, pid_t pid)
 {
-	int	i;
-	int mask;
+	int		i;
+	int		mask;
 	char	c;
-	int	j;
+	int		j;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -54,15 +55,12 @@ char	char_to_binary(char *str, pid_t pid)
 		j = 0;
 		while (j < 8)
 		{
-			//printf("%c", c & mask ? '1' : '0');
-			/* compares the bits at the same position */
 			if (c & mask)
 				kill(pid, SIGUSR2);
-					else
+			else
 				kill(pid, SIGUSR1);
 			mask >>= 1;
 			j++;
-			/* this needs to be adjusted depending on the computer */
 			usleep(300);
 		}
 		i++;
@@ -72,14 +70,14 @@ char	char_to_binary(char *str, pid_t pid)
 
 int	main(int argc, char *argv[])
 {
-   pid_t	pid;
+	pid_t	pid;
 
-   if (argc != 3)
-   {
-   	ft_printf("Error: invalid arguments\n");
-   		return(0);
-   }
-   pid = ft_atoi(argv[1]);
-   char_to_binary(argv[2], pid);
-   return (0);
+	if (argc != 3)
+	{
+		ft_printf("Error: invalid arguments\n");
+		return (0);
+	}
+	pid = ft_atoi(argv[1]);
+	char_to_binary(argv[2], pid);
+	return (0);
 }
