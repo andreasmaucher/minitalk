@@ -1,41 +1,58 @@
-/*2 programs 
-include printf in subdirectory
-makefile is not allowed to relink, meaning if I did make once and o files
- and executables got generated
-I am not allowed to do this again before I do clean */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: amaucher <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/22 11:32:20 by amaucher          #+#    #+#              #
+#    Updated: 2023/03/22 11:32:23 by amaucher         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS = client.c server.c utils.c \
+# binary name
+NAME = 
+CLIENT =	client
+SERVER =	server
 
-OBJS = $(SRCS:.c=.o)
+# printf library
+LIBFTPRINTF	=	ft_printf/libftprintf.a
+LIBFTPRINTF_DIR	=	ft_printf
+
+# client & server variables
+SRC_C	=	client.c
+SRC_S	=	server.c
+OBJ_S	=	server.o
+OBJ_C	=	client.o
+INC		=	minitalk.h
 
 # compilation & flags
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -I.
 
-NAME = 
-CLIENT =	client
-SERVER =	server
+all: $(LIBFTPRINTF) $(CLIENT) $(SERVER)
 
-# printf library
+$(SERVER): $(OBJ_S) $(INC)
+	@ $(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ $(OBJ_S)
 
-//!
+$(CLIENT): $(OBJ_C) $(INC)
+	@ $(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ $(OBJ_C)
 
+%.o: %.c
+	@ $(CC) $(CFLAGS) -c $< -o $@
 
-all: $(SERVER) $(CLIENT)
-
-$(NAME): all
-
-
-all: $(NAME)
-
-$(NAME): $(OBJS)
-		ar rcs $(NAME) $(OBJS)
+$(LIBFTPRINTF):
+	@ $(MAKE) -C $(LIBFTPRINTF_DIR)
 
 clean:
-	/bin/rm -f $(OBJS)
+	@ $(MAKE) clean -C $(LIBFTPRINTF_DIR)
+	@ $(RM) $(OBJ_C) $(OBJ_S)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@ $(MAKE) fclean -C $(LIBFTPRINTF_DIR)
+	@ $(RM) $(CLIENT) $(SERVER)
 
 re: fclean all
+
+.PHONY: all clean fclean re
