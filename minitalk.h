@@ -13,16 +13,16 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include "ft_printf/ft_printf.h"
-#include <sys/types.h>
+# include <unistd.h>
+# include <signal.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
+# include <sys/types.h>
+# include "../ft_printf/ft_printf.h"
 
-int	ft_printf(const char *format, ...);
+/* utils */
 size_t	ft_strlen(const char *s);
 int	ft_atoi(const char *nptr);
 

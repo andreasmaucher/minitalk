@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-int	ft_atoi(const char *nptr);
+# include "minitalk.h"
 
 char	char_to_binary(char *str, pid_t pid)
 {
@@ -33,7 +31,7 @@ char	char_to_binary(char *str, pid_t pid)
 			/* compares the bits at the same position */
 			if (c & mask)
 				kill(pid, SIGUSR2);
-			else
+					else
 				kill(pid, SIGUSR1);
 			mask >>= 1;
 			j++;
@@ -41,7 +39,6 @@ char	char_to_binary(char *str, pid_t pid)
 			usleep(300);
 		}
 		i++;
-		//printf("\n");
 	}
 	return (c);
 }
@@ -53,7 +50,7 @@ int	main(int argc, char *argv[])
    if (argc != 3)
    {
    	printf("Error: invalid arguments\n");
-   		exit(0);
+   		return(0);
    }
    pid = ft_atoi(argv[1]);
    char_to_binary(argv[2], pid);
