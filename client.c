@@ -74,7 +74,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		ft_printf("Error: invalid arguments\n");
+		printf("Error: invalid arguments\n");
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
