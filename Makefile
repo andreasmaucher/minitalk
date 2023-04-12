@@ -16,7 +16,7 @@ CLIENT =	client
 SERVER =	server
 
 # printf library
-LIBFTPRINTF_DIR	=	./ft_printf
+LIBFTPRINTF_DIR	=		ft_printf
 LIBFTPRINTF	=	$(LIBFTPRINTF_DIR)/libftprintf.a
 
 # client & server variables
