@@ -22,22 +22,21 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-//! just updated
 char	concetonate_str(int ascii, char *binary)
 {
 	int j;
 
 	j = 7;
 	while (j >= 0)
-		{
-			if (ascii & (1 << j))
-				strcat(binary, "1"); //!
-			else
-				strcat(binary, "0"); //!
-			j--;
-			printf("%s\n", binary);
-			j++;
-		}
+	{
+		if (ascii & (1 << j))
+			strcat(binary, "1"); //!
+		else
+			strcat(binary, "0"); //!
+		j--;
+		printf("%s\n", binary);
+	}
+	return (binary);
 }
 
 /* 1. convert each char to ascii; one byte are 8 bits
@@ -60,7 +59,7 @@ char	*str_to_binary(char *str)
 	{
 		ascii = str[i];
 		j = 7;
-		concetonate_str(ascii, binary); //!
+		binary = concetonate_str(ascii, binary);
 		i++;
 	}
 	return (binary);
