@@ -22,12 +22,33 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
+//! just updated
+char	concetonate_str(int ascii, char *binary)
+{
+	int j;
+
+	j = 7;
+	while (j >= 0)
+		{
+			if (ascii & (1 << j))
+				strcat(binary, "1"); //!
+			else
+				strcat(binary, "0"); //!
+			j--;
+			printf("%s\n", binary);
+			j++;
+		}
+}
+
+/* 1. convert each char to ascii; one byte are 8 bits
+2. convert ascii to binary
+3. concatenate the new with the already existing string */
 char	*str_to_binary(char *str)
 {
-	int	strlen;
-	int	i;
-	int	j;
-	int	ascii;
+	int		strlen;
+	int		i;
+	int		j;
+	int		ascii;
 	char	*binary;
 
 	if (str == NULL)
@@ -37,21 +58,9 @@ char	*str_to_binary(char *str)
 	i = 0;
 	while (i < strlen)
 	{
-		/* convert each char to ascii */
 		ascii = str[i];
-		/* since one byte are 8 bits */
 		j = 7;
-		while (j >= 0)
-		{
-			/* convert ascii to binary */ //! what is happening here
-			if (ascii & (1 << j))
-			/* to concatenate the new with the already existing string */
-				strcat(binary, "1"); //! I can"t use library function!
-			else 
-				strcat(binary, "0");
-			j--;
-			printf("%s\n", binary);
-		}
+		concetonate_str(ascii, binary); //!
 		i++;
 	}
 	return (binary);
@@ -74,7 +83,6 @@ int	main(int ac, char **av)
 {
 	char	*binary;
 
-	//binary = str_to_binary(av[2]);
 	binary = convert(av[2]);
 	printf("%s", binary);
 }

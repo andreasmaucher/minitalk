@@ -39,6 +39,25 @@ int	ft_atoi(const char *nptr)
 	return (res * sign);
 }
 
+/* sending out the signal via kill */
+int kill_function(char c, int mask, pid_t pid)
+{
+	int j;
+
+	j = 0;
+	while (j < 8)
+	{
+		if (c & mask)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		mask >>= 1;
+		usleep(300);
+		j++;
+	}
+	return (mask);
+}
+
 /* conversion by comparing the bits at the same position */
 char	char_to_binary(char *str, pid_t pid)
 {
@@ -52,17 +71,7 @@ char	char_to_binary(char *str, pid_t pid)
 	{
 		mask = 0b10000000;
 		c = str[i];
-		j = 0;
-		while (j < 8)
-		{
-			if (c & mask)
-				kill(pid, SIGUSR2);
-			else
-				kill(pid, SIGUSR1);
-			mask >>= 1;
-			j++;
-			usleep(300);
-		}
+		mask = kill_function(c, mask, pid);
 		i++;
 	}
 	return (c);
