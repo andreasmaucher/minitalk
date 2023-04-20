@@ -12,8 +12,6 @@
 
 #include "minitalk.h"
 
-//! GET RID OF PRINTF!!!
-
 /* 0xFF = 0b11111111; 0x80 = 0b10000000; n is a counter to 8 bits */
 void	handler_sigusr(int signal)
 {
@@ -29,7 +27,7 @@ void	handler_sigusr(int signal)
 	n++;
 	if (n == 8)
 	{
-		printf("%c\n", c);
+		ft_printf("%c\n", c);
 		n = 0;
 		c = 0b11111111;
 	}
@@ -40,7 +38,7 @@ int	main(void)
 	pid_t	pid;
 
 	pid = getpid();
-	printf("PID: %d\n", pid);
+	ft_printf("PID: %d\n", pid);
 	signal(SIGUSR1, handler_sigusr);
 	signal(SIGUSR2, handler_sigusr);
 	while (1)
