@@ -61,10 +61,9 @@ int kill_function(char c, int mask, pid_t pid)
 /* conversion by comparing the bits at the same position */
 char	char_to_binary(char *str, pid_t pid)
 {
-	int		i;
-	int		mask;
+	int	i;
+	int	mask;
 	char	c;
-	int		j;
 
 	i = 0;
 	while (str[i] != '\0')

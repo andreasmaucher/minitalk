@@ -13,6 +13,7 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
+# include "ft_printf/ft_printf.h"
 # include <unistd.h>
 # include <signal.h>
 # include <stdlib.h>
@@ -20,6 +21,5 @@
 # include <stdio.h>
 # include <string.h>
 # include <sys/types.h>
-# include "ft_printf/ft_printf.h"
 
 #endif

@@ -10,49 +10,33 @@
 #                                                                              #
 # **************************************************************************** #
 
-# binary name
-NAME = 
-CLIENT =	client
-SERVER =	server
-
-# printf library
-LIBFTPRINTF_DIR	=		ft_printf
-LIBFTPRINTF	=	$(LIBFTPRINTF_DIR)/libftprintf.a
-
-# client & server variables
-SRC_C	=	client.c
-SRC_S	=	server.c
-OBJ_S	=	server.o
-OBJ_C	=	client.o
-INC		=	minitalk.h
-
-# compilation & flags
+F_SERVER = server.c
+F_CLIENT = client.c
 CC = cc
-RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror
+SERVER = server
+CLIENT = client
+PRINTF = ft_printf/libftprintf.a
+INCLUDES = -I ft_printf/includes
+MAKE = make
 
-all: $(LIBFTPRINTF) $(CLIENT) $(SERVER)
+all: $(SERVER) $(CLIENT)
 
-$(SERVER): $(OBJ_S) $(INC)
-	@ $(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ $(OBJ_S)
+$(SERVER): $(F_SERVER) $(PRINTF)
+	$(CC) $(CFLAGS) $(F_SERVER) $(PRINTF) $(INCLUDES) -o $(SERVER)
 
-$(CLIENT): $(OBJ_C) $(INC)
-	@ $(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ $(OBJ_C)
+$(CLIENT): $(F_CLIENT) $(PRINTF)
+	$(CC) $(CFLAGS) $(F_CLIENT) $(PRINTF) $(INCLUDES) -o $(CLIENT)
 
-%.o: %.c
-	@ $(CC) $(CFLAGS) -c $< -o $@
-
-$(LIBFTPRINTF):
-	@ $(MAKE) -C $(LIBFTPRINTF_DIR)
+$(PRINTF):
+	$(MAKE) -C ft_printf
 
 clean:
-	@ $(MAKE) clean -C $(LIBFTPRINTF_DIR)
-	@ $(RM) $(OBJ_C) $(OBJ_S)
+	$(MAKE) -C ft_printf clean
 
 fclean: clean
-	@ $(MAKE) fclean -C $(LIBFTPRINTF_DIR)
-	@ $(RM) $(CLIENT) $(SERVER)
+	$(MAKE) -C ft_printf fclean
+	rm -f $(SERVER) $(CLIENT)
 
-re: fclean all
-
-.PHONY: all clean fclean re
+re: fclean
+	$(MAKE) all
