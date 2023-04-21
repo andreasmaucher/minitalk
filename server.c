@@ -27,7 +27,7 @@ void	handler_sigusr(int signal)
 	n++;
 	if (n == 8)
 	{
-		write(1, &c, 1);
+		//write(1, &c, 1);
 		n = 0;
 		c = 0b11111111;
 	}
@@ -38,7 +38,8 @@ int	main(void)
 	pid_t	pid;
 
 	pid = getpid();
-	write(1, &pid, sizeof(pid));
+	printf("%d", pid);
+	//write(1, &pid, sizeof(pid));
 	while (1)
 	{
 		signal(SIGUSR1, handler_sigusr);
