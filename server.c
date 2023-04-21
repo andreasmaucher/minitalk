@@ -39,8 +39,11 @@ int	main(void)
 
 	pid = getpid();
 	write(1, &pid, sizeof(pid));
-	signal(SIGUSR1, handler_sigusr);
-	signal(SIGUSR2, handler_sigusr);
 	while (1)
+	{
+		signal(SIGUSR1, handler_sigusr);
+		signal(SIGUSR2, handler_sigusr);
 		pause();
+	}
+	return (0);
 }

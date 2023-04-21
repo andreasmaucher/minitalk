@@ -82,7 +82,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(1, "Error: invalid arguments\n", 25);
+		write(1, "Error: invalid arguments\n", 26);
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
