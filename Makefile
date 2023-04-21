@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SERVER = server
 CLIENT = client
-PRINTF = ft_printf/libftprintf.a
+PRINTF = ft_printf/ft_printf.a
 INCLUDES = -I ft_printf/includes
 MAKE = make
 

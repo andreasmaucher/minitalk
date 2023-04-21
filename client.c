@@ -61,11 +61,11 @@ int kill_function(char c, int mask, pid_t pid)
 /* conversion by comparing the bits at the same position */
 char	char_to_binary(char *str, pid_t pid)
 {
-	int	i;
-	int	mask;
+	int		i;
+	int		mask;
 	char	c;
-
 	i = 0;
+	
 	while (str[i] != '\0')
 	{
 		mask = 0b10000000;
@@ -82,7 +82,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		printf("Error: invalid arguments\n");
+		write(1, "Error: invalid arguments\n", 25);
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
