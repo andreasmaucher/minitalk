@@ -24,22 +24,21 @@ void	handler_sigusr(int signal)
 		c ^= mask >> n;
 	else if (signal == SIGUSR2)
 		c |= mask >> n;
-	n++;
+	n++; 
 	if (n == 8)
 	{
-		//write(1, &c, 1);
+		ft_printf("%c", c);
 		n = 0;
 		c = 0b11111111;
 	}
 }
 
-int	main(void)
+int	main()
 {
 	pid_t	pid;
 
 	pid = getpid();
-	printf("%d", pid);
-	//write(1, &pid, sizeof(pid));
+	ft_printf("%d", pid);
 	while (1)
 	{
 		signal(SIGUSR1, handler_sigusr);
