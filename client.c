@@ -52,7 +52,7 @@ int	kill_function(char c, int mask, pid_t pid)
 		else
 			kill(pid, SIGUSR1);
 		mask >>= 1;
-		usleep(300);
+		usleep(42);
 		j++;
 	}
 	return (mask);

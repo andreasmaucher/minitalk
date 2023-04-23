@@ -23,13 +23,20 @@ CLIENT = client
 PRINTF = ft_printf/libftprintf.a
 INCLUDES = -I ft_printf/includes
 
+#messages
+SERV_READY	=	echo "\nServer ready!\n"
+
+CLI_READY	=	echo "\nClient ready!\n"
+
 all: $(SERVER) $(CLIENT)
 
 $(SERVER): server.c $(PRINTF)
 	$(CC) $(CFLAGS) server.c $(PRINTF) $(INCLUDES) -o $(SERVER)
+	$(SERV_READY)
 
 $(CLIENT): client.c $(PRINTF)
 	$(CC) $(CFLAGS) client.c $(PRINTF) $(INCLUDES) -o $(CLIENT)
+	$(CLI_READY)
 
 $(PRINTF):
 	$(MAKE) -C ft_printf

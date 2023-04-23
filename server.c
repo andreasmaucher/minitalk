@@ -38,7 +38,7 @@ int	main(void)
 	pid_t	pid;
 
 	pid = getpid();
-	ft_printf("%d", pid);
+	ft_printf("%d\n", pid);
 	signal(SIGUSR1, handler_sigusr);
 	signal(SIGUSR2, handler_sigusr);
 	while (1)
