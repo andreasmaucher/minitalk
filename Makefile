@@ -10,23 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-F_SERVER = server.c
-F_CLIENT = client.c
+#compilation & flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+MAKE = make
+
+#executables
 SERVER = server
 CLIENT = client
+
+#printf directory / -I searches for header files within that directory
 PRINTF = ft_printf/libftprintf.a
 INCLUDES = -I ft_printf/includes
-MAKE = make
 
 all: $(SERVER) $(CLIENT)
 
-$(SERVER): $(F_SERVER) $(PRINTF)
-	$(CC) $(CFLAGS) $(F_SERVER) $(PRINTF) $(INCLUDES) -o $(SERVER)
+$(SERVER): server.c $(PRINTF)
+	$(CC) $(CFLAGS) server.c $(PRINTF) $(INCLUDES) -o $(SERVER)
 
-$(CLIENT): $(F_CLIENT) $(PRINTF)
-	$(CC) $(CFLAGS) $(F_CLIENT) $(PRINTF) $(INCLUDES) -o $(CLIENT)
+$(CLIENT): client.c $(PRINTF)
+	$(CC) $(CFLAGS) client.c $(PRINTF) $(INCLUDES) -o $(CLIENT)
 
 $(PRINTF):
 	$(MAKE) -C ft_printf

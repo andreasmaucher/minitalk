@@ -40,9 +40,9 @@ int	ft_atoi(const char *nptr)
 }
 
 /* sending out the signal via kill */
-int kill_function(char c, int mask, pid_t pid)
+int	kill_function(char c, int mask, pid_t pid)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (j < 8)
@@ -64,8 +64,8 @@ char	char_to_binary(char *str, pid_t pid)
 	int		i;
 	int		mask;
 	char	c;
+
 	i = 0;
-	
 	while (str[i] != '\0')
 	{
 		mask = 0b10000000;
@@ -82,7 +82,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(1, "Error: invalid arguments\n", 26);
+		ft_printf("Error: invalid arguments\n");
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);

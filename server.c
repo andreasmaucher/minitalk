@@ -24,7 +24,7 @@ void	handler_sigusr(int signal)
 		c ^= mask >> n;
 	else if (signal == SIGUSR2)
 		c |= mask >> n;
-	n++; 
+	n++;
 	if (n == 8)
 	{
 		ft_printf("%c", c);
@@ -33,16 +33,16 @@ void	handler_sigusr(int signal)
 	}
 }
 
-int	main()
+int	main(void)
 {
 	pid_t	pid;
 
 	pid = getpid();
 	ft_printf("%d", pid);
+	signal(SIGUSR1, handler_sigusr);
+	signal(SIGUSR2, handler_sigusr);
 	while (1)
 	{
-		signal(SIGUSR1, handler_sigusr);
-		signal(SIGUSR2, handler_sigusr);
 		pause();
 	}
 	return (0);
