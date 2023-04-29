@@ -76,6 +76,8 @@ char	char_to_binary(char *str, pid_t pid)
 	return (c);
 }
 
+/* check if pid >=1 to avoid that the program crashes in case non-int
+or negative int input; 32768 is the pid max on 32 bit systems */
 int	main(int argc, char *argv[])
 {
 	pid_t	pid;
@@ -86,6 +88,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
-	char_to_binary(argv[2], pid);
-	return (0);
+	if (pid >= 1 && pid < 32768)
+	{
+		char_to_binary(argv[2], pid);
+		return (0);
+	}
 }
